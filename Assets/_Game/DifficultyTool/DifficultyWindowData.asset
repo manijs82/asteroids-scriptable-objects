@@ -19,6 +19,11 @@ MonoBehaviour:
   difficultyScalars:
     health: 15
     damageOfAsteroids: 1
-    projectileHealth: 10
-  defaultPresetIndex: 1
+    destroyProjectileOnTouch: 1
+    spawnRateRange: {x: 3, y: 7}
+    spawnAmountRange: {x: 1, y: 2}
+    asteroidSizeRange: {x: 0, y: 0}
+    asteroidSpeedRange: {x: 0, y: 0}
+    asteroidRotationSpeedRange: {x: 0, y: 0}
+  defaultPresetIndex: 2
   selectedPreset: {fileID: 11400000, guid: 8f2a6d94ae6891a4e952663bb7696f69, type: 2}

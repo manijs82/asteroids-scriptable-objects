@@ -90,6 +90,8 @@ public class DifficultyWindow : EditorWindow
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnRateRange"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnAmountRange"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("asteroidSizeRange"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("asteroidSpeedRange"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("asteroidRotationSpeedRange"));
         EditorGUILayout.Space();
     }
 

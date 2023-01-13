@@ -15,5 +15,10 @@ MonoBehaviour:
   presetName: Hard
   scalars:
     health: 5
-    damageOfAsteroids: 5
-    projectileHealth: 1
+    damageOfAsteroids: 1
+    destroyProjectileOnTouch: 1
+    spawnRateRange: {x: 0.2, y: 2}
+    spawnAmountRange: {x: 3, y: 5}
+    asteroidSizeRange: {x: 0, y: 0}
+    asteroidSpeedRange: {x: 0, y: 0}
+    asteroidRotationSpeedRange: {x: 0, y: 0}

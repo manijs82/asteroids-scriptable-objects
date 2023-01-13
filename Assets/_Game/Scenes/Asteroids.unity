@@ -236,9 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a86f40eac144cdade94a1844bb715c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPreset: {fileID: 11400000, guid: 8c967f00777e0874db2ee8609c19afea, type: 2}
+  defaultPreset: {fileID: 11400000, guid: 865fedb3b44550d4ca47e9d8647ca92d, type: 2}
   health: {fileID: 2970632032457142646}
   hull: {fileID: 2970632032457142645}
+  spawner: {fileID: 1867257716}
 --- !u!4 &1793740766
 Transform:
   m_ObjectHideFlags: 0
