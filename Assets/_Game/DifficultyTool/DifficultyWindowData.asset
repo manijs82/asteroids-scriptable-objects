@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cff040d649140208f26cbfdf35804f1, type: 3}
+  m_Name: DifficultyWindowData
+  m_EditorClassIdentifier: 
+  presets:
+  - {fileID: 11400000, guid: 8f2a6d94ae6891a4e952663bb7696f69, type: 2}
+  - {fileID: 11400000, guid: 8c967f00777e0874db2ee8609c19afea, type: 2}
+  - {fileID: 11400000, guid: 865fedb3b44550d4ca47e9d8647ca92d, type: 2}
+  difficultyScalars:
+    health: 15
+    damageOfAsteroids: 1
+    projectileHealth: 10
+  defaultPresetIndex: 1
+  selectedPreset: {fileID: 11400000, guid: 8f2a6d94ae6891a4e952663bb7696f69, type: 2}
