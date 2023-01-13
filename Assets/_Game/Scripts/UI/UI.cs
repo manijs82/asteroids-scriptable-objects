@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace.ScriptableEvents;
+using Ship;
 using TMPro;
 using UnityEngine;
 using Variables;
@@ -8,10 +9,9 @@ namespace UI
 {
     public class UI : MonoBehaviour
     {
-        [Header("Health:")]
-        [SerializeField] private IntVariable _healthVar;
+        [Header("Health:")] 
+        [SerializeField] private Health health;
         [SerializeField] private TextMeshProUGUI _healthText;
-        [SerializeField] private ScriptableEventIntReference _onHealthChangedEvent;
         
         [Header("Score:")]
         [SerializeField] private TextMeshProUGUI _scoreText;
@@ -24,12 +24,17 @@ namespace UI
         
         private void Start()
         {
-            SetHealthText($"Health: {_healthVar.Value}");
+            if (health == null)
+                health = FindObjectOfType<Health>();
+            SetHealthText($"Health: {health.initialHealth}");
+            health.OnTakeDamage += OnTakeDamage;
         }
 
-        public void OnHealthChanged(IntReference newValue)
+        private void OnTakeDamage(int currentHealth)
         {
-            SetHealthText($"Health: {newValue.GetValue()}");
+            SetHealthText($"Health: {currentHealth}");
+            if(currentHealth <= 0)
+                SetHealthText("Dead");
         }
 
         private void SetHealthText(string text)

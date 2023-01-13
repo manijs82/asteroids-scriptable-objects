@@ -7,12 +7,11 @@ public class DifficultyWindow : EditorWindow
 {
     private DifficultyWindowData data;
     private DifficultyApplier applier;
+    private int appliedPresetIndex;
 
     private SerializedObject so;
     private SerializedProperty propPresets;
     private SerializedProperty propScalars;
-    private SerializedProperty propApplier;
-    private SerializedProperty propDefaultPresetIndex;
 
     [MenuItem("Tools/Difficulty")]
     public static void CreateWindow() => GetWindow<DifficultyWindow>("Difficulty");
@@ -41,8 +40,7 @@ public class DifficultyWindow : EditorWindow
         so = new SerializedObject(data);
         propPresets = so.FindProperty("presets");
         propScalars = so.FindProperty("difficultyScalars");
-        propApplier = so.FindProperty("applier");
-        propDefaultPresetIndex = so.FindProperty("defaultPresetIndex");
+        appliedPresetIndex = data.defaultPresetIndex;
     }
 
     private void OnGUI()
@@ -88,7 +86,10 @@ public class DifficultyWindow : EditorWindow
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("health"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("damageOfAsteroids"));
-        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("projectileHealth"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("destroyProjectileOnTouch"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnRateRange"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnAmountRange"));
+        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("asteroidSizeRange"));
         EditorGUILayout.Space();
     }
 
@@ -100,11 +101,13 @@ public class DifficultyWindow : EditorWindow
         for (int i = 0; i < data.presets.Count; i++) 
             names[i] = data.presets[i].presetName;
         
+        EditorGUILayout.LabelField($"Current default difficulty preset : {data.presets[appliedPresetIndex].presetName}");
         data.defaultPresetIndex = EditorGUILayout.Popup(data.defaultPresetIndex, names);
         if (GUILayout.Button("Set as default"))
         {
             Undo.RecordObject(applier, "Set Difficulty");
             applier.defaultPreset = data.presets[data.defaultPresetIndex];
+            appliedPresetIndex = data.defaultPresetIndex;
             EditorUtility.SetDirty(applier);
         }
     }
