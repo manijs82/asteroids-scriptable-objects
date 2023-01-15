@@ -61,16 +61,23 @@ public class DifficultyWindow : EditorWindow
 
     private void DrawDifficultySelectors()
     {
+        EditorGUILayout.Space();
         if(data.presets == null) return;
         using (new EditorGUILayout.HorizontalScope())
         {
             foreach (var preset in data.presets)
             {
                 if (preset == null) continue;
-                if (GUILayout.Button(preset.presetName))
+                GUIStyle style = GUI.skin.GetStyle("Button");
+                if (data.selectedPreset == preset)
                 {
-                    SetPreset(preset);
+                    style.fontStyle = FontStyle.BoldAndItalic;
                 }
+
+                if (GUILayout.Button(preset.presetName, style)) 
+                    SetPreset(preset);
+                
+                style.fontStyle = FontStyle.Normal;
             }
         }
     }
@@ -83,10 +90,8 @@ public class DifficultyWindow : EditorWindow
 
     private void DrawScalars()
     {
-        EditorGUILayout.Space();
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("health"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("damageOfAsteroids"));
-        EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("destroyProjectileOnTouch"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnRateRange"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("spawnAmountRange"));
         EditorGUILayout.PropertyField(propScalars.FindPropertyRelative("asteroidSizeRange"));

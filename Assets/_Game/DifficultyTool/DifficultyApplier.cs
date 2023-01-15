@@ -5,7 +5,8 @@ using UnityEngine;
 public class DifficultyApplier : MonoBehaviour
 {
      public DifficultyPreset defaultPreset;
-     [Space] [SerializeField] private Health health;
+     [Space] 
+     [SerializeField] private Health health;
      [SerializeField] private Hull hull;
      [SerializeField] private AsteroidSpawner spawner;
      
@@ -21,5 +22,12 @@ public class DifficultyApplier : MonoBehaviour
           spawner._maxSpawnTime = scalars.spawnRateRange.y;
           spawner._minAmount = scalars.spawnAmountRange.x;
           spawner._maxAmount = scalars.spawnAmountRange.y;
+
+          Asteroid.minForce = scalars.asteroidSpeedRange.x;
+          Asteroid.maxForce = scalars.asteroidSpeedRange.y;
+          Asteroid.minSize = scalars.asteroidSizeRange.x;
+          Asteroid.maxSize = scalars.asteroidSizeRange.y;
+          Asteroid.minTorque = scalars.asteroidRotationSpeedRange.x;
+          Asteroid.maxTorque = scalars.asteroidRotationSpeedRange.y;
      }
 }

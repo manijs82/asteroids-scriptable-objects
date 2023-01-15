@@ -16,9 +16,8 @@ MonoBehaviour:
   scalars:
     health: 15
     damageOfAsteroids: 1
-    destroyProjectileOnTouch: 1
     spawnRateRange: {x: 3, y: 7}
     spawnAmountRange: {x: 1, y: 2}
-    asteroidSizeRange: {x: 0, y: 0}
-    asteroidSpeedRange: {x: 0, y: 0}
-    asteroidRotationSpeedRange: {x: 0, y: 0}
+    asteroidSizeRange: {x: 0.5, y: 1}
+    asteroidSpeedRange: {x: 1, y: 4}
+    asteroidRotationSpeedRange: {x: 0.1, y: 0.3}

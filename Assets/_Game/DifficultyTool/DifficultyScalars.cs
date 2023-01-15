@@ -6,7 +6,6 @@ public class DifficultyScalars
     [Header("Player")]
     public int health;
     public int damageOfAsteroids;
-    public bool destroyProjectileOnTouch;
     [Header("Spawner")]
     public Vector2 spawnRateRange;
     public Vector2Int spawnAmountRange;
