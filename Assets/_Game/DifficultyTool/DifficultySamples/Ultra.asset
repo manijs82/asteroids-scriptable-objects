@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95c8dcffcc0eb7447a6be365cdc04f1c, type: 3}
-  m_Name: Normal
+  m_Name: Ultra
   m_EditorClassIdentifier: 
-  presetName: Normal
+  presetName: Ultra
   scalars:
-    health: 10
+    health: 1
     damageOfAsteroids: 1
-    spawnRateRange: {x: 1, y: 4}
-    spawnAmountRange: {x: 1, y: 2}
-    asteroidSizeRange: {x: 0.2, y: 1}
-    asteroidSpeedRange: {x: 2, y: 6}
-    asteroidRotationSpeedRange: {x: 0.1, y: 0.5}
+    spawnRateRange: {x: 0.1, y: 0.5}
+    spawnAmountRange: {x: 5, y: 5}
+    asteroidSizeRange: {x: 5, y: 5}
+    asteroidSpeedRange: {x: 10, y: 10}
+    asteroidRotationSpeedRange: {x: 5, y: 10}

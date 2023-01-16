@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DifficultyWindow : EditorWindow
 {
-    private DifficultyWindowData data;
+    private DifficultyWindowData windowData;
     private DifficultyApplier applier;
     private int appliedPresetIndex;
 
@@ -18,17 +18,17 @@ public class DifficultyWindow : EditorWindow
 
     private void OnEnable()
     {
-        if (data == null)
+        if (windowData == null)
         {
-            data = AssetDatabase.LoadAssetAtPath<DifficultyWindowData>("Assets/_Game/DifficultyTool/DifficultyWindowData.asset");
-            if(data != null)
+            windowData = AssetDatabase.LoadAssetAtPath<DifficultyWindowData>("Assets/_Game/DifficultyTool/DifficultyWindowData.asset");
+            if(windowData != null)
             {
                 InitSo();
                 return;
             }
 
-            data = CreateInstance<DifficultyWindowData>();
-            AssetDatabase.CreateAsset(data, "Assets/_Game/DifficultyTool/DifficultyWindowData.asset");
+            windowData = CreateInstance<DifficultyWindowData>();
+            AssetDatabase.CreateAsset(windowData, "Assets/_Game/DifficultyTool/DifficultyWindowData.asset");
             AssetDatabase.Refresh();
         }
 
@@ -37,10 +37,10 @@ public class DifficultyWindow : EditorWindow
 
     private void InitSo()
     {
-        so = new SerializedObject(data);
+        so = new SerializedObject(windowData);
         propPresets = so.FindProperty("presets");
         propScalars = so.FindProperty("difficultyScalars");
-        appliedPresetIndex = data.defaultPresetIndex;
+        appliedPresetIndex = windowData.defaultPresetIndex;
     }
 
     private void OnGUI()
@@ -54,38 +54,34 @@ public class DifficultyWindow : EditorWindow
 
         if (so.ApplyModifiedProperties())
         {
-            if(data.selectedPreset != null)
-                EditorUtility.SetDirty(data.selectedPreset);
+            if(windowData.selectedPreset != null)
+                EditorUtility.SetDirty(windowData.selectedPreset);
         }
     }
 
     private void DrawDifficultySelectors()
     {
         EditorGUILayout.Space();
-        if(data.presets == null) return;
+        if(windowData.presets == null) return;
         using (new EditorGUILayout.HorizontalScope())
         {
-            foreach (var preset in data.presets)
+            foreach (var preset in windowData.presets)
             {
                 if (preset == null) continue;
-                GUIStyle style = GUI.skin.GetStyle("Button");
-                if (data.selectedPreset == preset)
-                {
+                GUIStyle style = new(GUI.skin.GetStyle("Button"));
+                if (windowData.selectedPreset == preset) 
                     style.fontStyle = FontStyle.BoldAndItalic;
-                }
 
                 if (GUILayout.Button(preset.presetName, style)) 
                     SetPreset(preset);
-                
-                style.fontStyle = FontStyle.Normal;
             }
         }
     }
 
     private void SetPreset(DifficultyPreset preset)
     {
-        data.selectedPreset = preset;
-        data.difficultyScalars = preset.scalars;
+        windowData.selectedPreset = preset;
+        windowData.difficultyScalars = preset.scalars;
     }
 
     private void DrawScalars()
@@ -104,17 +100,17 @@ public class DifficultyWindow : EditorWindow
     {
         GetApplier();
 
-        string[] names = new string[data.presets.Count];
-        for (int i = 0; i < data.presets.Count; i++) 
-            names[i] = data.presets[i].presetName;
+        string[] names = new string[windowData.presets.Count];
+        for (int i = 0; i < windowData.presets.Count; i++) 
+            names[i] = windowData.presets[i].presetName;
         
-        EditorGUILayout.LabelField($"Current default difficulty preset : {data.presets[appliedPresetIndex].presetName}");
-        data.defaultPresetIndex = EditorGUILayout.Popup(data.defaultPresetIndex, names);
+        EditorGUILayout.LabelField($"Current default difficulty preset : {windowData.presets[appliedPresetIndex].presetName}");
+        windowData.defaultPresetIndex = EditorGUILayout.Popup(windowData.defaultPresetIndex, names);
         if (GUILayout.Button("Set as default"))
         {
             Undo.RecordObject(applier, "Set Difficulty");
-            applier.defaultPreset = data.presets[data.defaultPresetIndex];
-            appliedPresetIndex = data.defaultPresetIndex;
+            applier.defaultPreset = windowData.presets[windowData.defaultPresetIndex];
+            appliedPresetIndex = windowData.defaultPresetIndex;
             EditorUtility.SetDirty(applier);
         }
     }

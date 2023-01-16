@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f2a6d94ae6891a4e952663bb7696f69, type: 2}
   - {fileID: 11400000, guid: 8c967f00777e0874db2ee8609c19afea, type: 2}
   - {fileID: 11400000, guid: 865fedb3b44550d4ca47e9d8647ca92d, type: 2}
+  - {fileID: 11400000, guid: 7e1e6f77375683a4c8c99a6d2a631bf9, type: 2}
   difficultyScalars:
     health: 10
     damageOfAsteroids: 1
@@ -24,5 +25,5 @@ MonoBehaviour:
     asteroidSizeRange: {x: 0.2, y: 1}
     asteroidSpeedRange: {x: 2, y: 6}
     asteroidRotationSpeedRange: {x: 0.1, y: 0.5}
-  defaultPresetIndex: 1
+  defaultPresetIndex: 2
   selectedPreset: {fileID: 11400000, guid: 8c967f00777e0874db2ee8609c19afea, type: 2}
