@@ -1,3 +1,5 @@
+Tool development course assignment. Target grade: VG
+
 # Tools made for the asteroids game:
 I added a difficulty tool. In this tool you can set difficulty levels by changing parameters that are then stored in a scriptable object
 and applied in runtime.
